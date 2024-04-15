@@ -1,13 +1,120 @@
 body {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Share Tech Mono', monospace;
+  line-height: 200%;
+  text-align: justify;
+  text-justify:inter-ideograph;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  height: 4rem;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.nav.sticky {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nav-brand{
+  width:20%;
+  height: 100%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 4rem;
+  text-decoration: none;
+}
+
+.textSlider{
+  background-color: #282c34;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 2vmin);
+  color: white;
+  margin-top: 4rem;
+}
+
+.selfIntro{
+  font-size: 24px;
+}
+
+img{
+  width: 100%;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.card{
+  padding: 1rem;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+form{
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+li.nav-item{
+    font-size:100px;
+    display: none;
+  }
+  .selfIntro {
+      font-size: 16px
+  }
+  .btn-container {
+      margin-bottom: 10px;
+  }
+  .education{
+    font-size: 16px
+  }
+  h1,h2{
+    font-size: 14px;
+  }
+  *{
+    font-size:12px;
+  }
+  
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .selfIntro {
+      font-size: 18px;
+  }
+  .btn-container {
+      margin-bottom: 20px;
+  }
+  *{
+    font-size:14px;
+  }
+  
+}
+
+@media (min-width: 1025px) {
+  .selfIntro {
+      font-size: 18px;
+  }
+  .btn-container {
+      margin-bottom: 30px;
+  }
+  
+}
+.footer{
+  text-align: center;
 }
