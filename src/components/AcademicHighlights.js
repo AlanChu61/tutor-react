@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../App';
 
-function Testimonials() {
+function AcademicHighlights() {
     const { language } = useLanguage();
 
     const content = {
@@ -103,4 +103,4 @@ function Testimonials() {
     );
 }
 
-export default Testimonials;
+export default AcademicHighlights;
