@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../App';
 
 function AcademicHighlights() {
@@ -77,7 +77,20 @@ function AcademicHighlights() {
         }
     };
 
-    const [displayedTestimonials, setDisplayedTestimonials] = useState([]);
+    const [displayedTestimonials, setDisplayedTestimonials] = useState(() => {
+        const initialTestimonials = [];
+        const allTestimonials = content[language].testimonials;
+        const totalToShow = window.innerWidth < 768 ? 3 : 4; // Show 3 on mobile, 4 on desktop
+
+        while (initialTestimonials.length < totalToShow) {
+            const randomIndex = Math.floor(Math.random() * allTestimonials.length);
+            const testimonial = allTestimonials[randomIndex];
+            if (!initialTestimonials.includes(testimonial)) {
+                initialTestimonials.push(testimonial);
+            }
+        }
+        return initialTestimonials;
+    });
 
     const generateRandomTestimonials = () => {
         const randomTestimonials = [];
@@ -93,10 +106,6 @@ function AcademicHighlights() {
         }
         setDisplayedTestimonials(randomTestimonials);
     };
-
-    useEffect(() => {
-        generateRandomTestimonials();
-    }, [language, generateRandomTestimonials]); // Add generateRandomTestimonials to the dependency array
 
     return (
         <section id="academic-highlights" className="py-5">
