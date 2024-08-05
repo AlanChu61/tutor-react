@@ -14,11 +14,11 @@ function Courses() {
             ]
         },
         zh: {
-            title: "我的課程",
+            title: "我的课程", // Simplified Chinese
             courses: [
-                "程式設計入門",
-                "高等數學",
-                "網頁開發基礎"
+                "程序设计入门",
+                "高等数学",
+                "网页开发基础"
             ]
         }
     };
@@ -34,7 +34,9 @@ function Courses() {
                                 <div className="card-body">
                                     <h5 className="card-title">{course}</h5>
                                     <p className="card-text">Course description goes here.</p>
-                                    <a href="#" className="btn btn-primary">Learn More</a>
+                                    <button className="btn btn-primary">
+                                        Learn More
+                                    </button>
                                 </div>
                             </div>
                         </div>
