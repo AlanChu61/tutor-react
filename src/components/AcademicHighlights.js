@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../App';
 
 function AcademicHighlights() {
@@ -77,12 +77,48 @@ function AcademicHighlights() {
         }
     };
 
+    // State to store current visible testimonials and screen size
+    const [visibleTestimonials, setVisibleTestimonials] = useState([]);
+    const [numTestimonials, setNumTestimonials] = useState(4);
+
+    // Function to generate a random selection of testimonials
+    const generateRandomTestimonials = (num) => {
+        const { testimonials } = content[language];
+        const shuffled = testimonials.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, num);
+    };
+
+    // Handle window resize to adjust the number of testimonials based on screen size
+    const handleResize = () => {
+        if (window.innerWidth < 768) {
+            setNumTestimonials(3);
+        } else {
+            setNumTestimonials(4);
+        }
+    };
+
+    // Initialize and update testimonials based on screen size
+    useEffect(() => {
+        handleResize(); // Set initial number of testimonials
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [language]); // Update on language change
+
+    useEffect(() => {
+        setVisibleTestimonials(generateRandomTestimonials(numTestimonials));
+    }, [numTestimonials]);
+
+    // Function to handle button click
+    const handleShowMore = () => {
+        setVisibleTestimonials(generateRandomTestimonials(numTestimonials));
+    };
+
     return (
         <section id="testimonials" className="py-5">
             <div className="container">
                 <h2 className="text-center mb-4">{content[language].title}</h2>
                 <div className="row">
-                    {content[language].testimonials.map((testimonial, index) => (
+                    {visibleTestimonials.map((testimonial, index) => (
                         <div className="col-md-6 mb-3" key={index}>
                             <div className="card h-100">
                                 <div className="card-body">
@@ -97,6 +133,11 @@ function AcademicHighlights() {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className="text-center mt-4">
+                    <button className="btn btn-primary" onClick={handleShowMore}>
+                        {language === 'en' ? 'See Other Students' : '看其他学生'}
+                    </button>
                 </div>
             </div>
         </section>
