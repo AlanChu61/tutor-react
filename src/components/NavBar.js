@@ -6,13 +6,13 @@ function Navbar() {
 
     const navItems = {
         en: ['Home', 'About', 'Courses', 'Testimonials', 'Contact'],
-        zh: ['主页', '关于我', '课程', '学生评价', '联系我们']  // Simplified Chinese
+        zh: ['主页', '关于我', '课程', '学生评价', '联系我们']
     };
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
-                <a className="navbar-brand" href="#home">Teacher Website</a>
+                <a className="navbar-brand" href="#home">Alan’s Learning Hub</a>
                 <button
                     className="navbar-toggler"
                     type="button"

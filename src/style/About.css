@@ -1,0 +1,56 @@
+/* About Section Styling */
+#about {
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+}
+
+#about h2 {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+#about p.lead {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.about-section h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  color: #333;
+}
+
+.about-section p,
+.about-section ul li {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.about-section ul {
+  padding-left: 0;
+}
+
+.about-section ul li {
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  #about h2 {
+    font-size: 1.75rem;
+  }
+
+  #about p.lead, 
+  .about-section h3,
+  .about-section p,
+  .about-section ul li {
+    font-size: 0.95rem;
+  }
+
+  .about-section {
+    margin-bottom: 2rem;
+  }
+}

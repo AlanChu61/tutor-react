@@ -9,25 +9,69 @@ function Testimonials() {
             title: "Student Testimonials",
             testimonials: [
                 {
-                    text: "This teacher's methods are incredibly effective. I've learned so much in such a short time!",
-                    author: "John Doe"
+                    author: "Michael Zhou",
+                    courses: "A-Level Math (A), Physics (A), Academic Paper (High Distinction)",
+                    university: "University of Melbourne"
                 },
                 {
-                    text: "The courses are well-structured and engaging. Highly recommended!",
-                    author: "Jane Smith"
+                    author: "Carlos Wang",
+                    courses: "A-Level Math (A*), ACT 35",
+                    university: "University of Sydney"
+                },
+                {
+                    author: "Natalia Du",
+                    courses: "A-Level Math (A*)",
+                    university: "Kyoto University"
+                },
+                {
+                    author: "Rachel Zhang",
+                    courses: "A-Level Math (A*), Further Math (A*)",
+                    university: "University of Warwick"
+                },
+                {
+                    author: "Cindy Chen",
+                    courses: "A-Level Math (A)",
+                    university: "Currently in high school"
+                },
+                {
+                    author: "Marshall Ye",
+                    courses: "Coding/Python/Algorithm",
+                    university: "Currently in high school"
                 }
             ]
         },
         zh: {
-            title: "學生評價",
+            title: "学生评价",
             testimonials: [
                 {
-                    text: "這位老師的教學方法非常有效。我在短時間內學到了很多東西！",
-                    author: "張三"
+                    author: "Michael Zhou",
+                    courses: "A-Level 数学 (A), 物理 (A), 学术论文 (优秀)",
+                    university: "墨尔本大学"
                 },
                 {
-                    text: "課程結構良好，內容引人入勝。強烈推薦！",
-                    author: "李四"
+                    author: "Carlos Wang",
+                    courses: "A-Level 数学 (A*), ACT 35",
+                    university: "悉尼大学"
+                },
+                {
+                    author: "Natalia Du",
+                    courses: "A-Level 数学 (A*)",
+                    university: "京都大学"
+                },
+                {
+                    author: "Rachel Zhang",
+                    courses: "A-Level 数学 (A*), 高数 (A*)",
+                    university: "华威大学"
+                },
+                {
+                    author: "Cindy Chen",
+                    courses: "A-Level 数学 (A)",
+                    university: "高中在读"
+                },
+                {
+                    author: "Marshall Ye",
+                    courses: "编程/Python/算法",
+                    university: "高中在读"
                 }
             ]
         }
@@ -40,11 +84,14 @@ function Testimonials() {
                 <div className="row">
                     {content[language].testimonials.map((testimonial, index) => (
                         <div className="col-md-6 mb-3" key={index}>
-                            <div className="card">
+                            <div className="card h-100">
                                 <div className="card-body">
                                     <blockquote className="blockquote mb-0">
-                                        <p>"{testimonial.text}"</p>
-                                        <footer className="blockquote-footer">{testimonial.author}</footer>
+                                        <footer className="blockquote-footer">
+                                            <strong>{testimonial.author}</strong> <br />
+                                            <span>Courses: {testimonial.courses}</span> <br />
+                                            <cite title="University">University: {testimonial.university}</cite>
+                                        </footer>
                                     </blockquote>
                                 </div>
                             </div>
