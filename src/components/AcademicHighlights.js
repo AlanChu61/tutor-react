@@ -6,7 +6,7 @@ function AcademicHighlights() {
 
     const content = {
         en: {
-            title: "Student Testimonials",
+            title: "Student Achievements",
             testimonials: [
                 {
                     author: "Michael Zhou",
@@ -41,7 +41,7 @@ function AcademicHighlights() {
             ]
         },
         zh: {
-            title: "学生评价",
+            title: "学生成就",
             testimonials: [
                 {
                     author: "Michael Zhou",
@@ -77,48 +77,33 @@ function AcademicHighlights() {
         }
     };
 
-    // State to store current visible testimonials and screen size
-    const [visibleTestimonials, setVisibleTestimonials] = useState([]);
-    const [numTestimonials, setNumTestimonials] = useState(4);
+    const [displayedTestimonials, setDisplayedTestimonials] = useState([]);
 
-    // Function to generate a random selection of testimonials
-    const generateRandomTestimonials = (num) => {
-        const { testimonials } = content[language];
-        const shuffled = testimonials.sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, num);
-    };
+    const generateRandomTestimonials = () => {
+        const randomTestimonials = [];
+        const allTestimonials = content[language].testimonials;
+        const totalToShow = window.innerWidth < 768 ? 3 : 4; // Show 3 on mobile, 4 on desktop
 
-    // Handle window resize to adjust the number of testimonials based on screen size
-    const handleResize = () => {
-        if (window.innerWidth < 768) {
-            setNumTestimonials(3);
-        } else {
-            setNumTestimonials(4);
+        while (randomTestimonials.length < totalToShow) {
+            const randomIndex = Math.floor(Math.random() * allTestimonials.length);
+            const testimonial = allTestimonials[randomIndex];
+            if (!randomTestimonials.includes(testimonial)) {
+                randomTestimonials.push(testimonial);
+            }
         }
+        setDisplayedTestimonials(randomTestimonials);
     };
 
-    // Initialize and update testimonials based on screen size
     useEffect(() => {
-        handleResize(); // Set initial number of testimonials
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, [language]); // Update on language change
-
-    useEffect(() => {
-        setVisibleTestimonials(generateRandomTestimonials(numTestimonials));
-    }, [numTestimonials]);
-
-    // Function to handle button click
-    const handleShowMore = () => {
-        setVisibleTestimonials(generateRandomTestimonials(numTestimonials));
-    };
+        generateRandomTestimonials();
+    }, [language, generateRandomTestimonials]); // Add generateRandomTestimonials to the dependency array
 
     return (
-        <section id="testimonials" className="py-5">
+        <section id="academic-highlights" className="py-5">
             <div className="container">
                 <h2 className="text-center mb-4">{content[language].title}</h2>
                 <div className="row">
-                    {visibleTestimonials.map((testimonial, index) => (
+                    {displayedTestimonials.map((testimonial, index) => (
                         <div className="col-md-6 mb-3" key={index}>
                             <div className="card h-100">
                                 <div className="card-body">
@@ -134,9 +119,9 @@ function AcademicHighlights() {
                         </div>
                     ))}
                 </div>
-                <div className="text-center mt-4">
-                    <button className="btn btn-primary" onClick={handleShowMore}>
-                        {language === 'en' ? 'See Other Students' : '看其他学生'}
+                <div className="text-center">
+                    <button className="btn btn-primary" onClick={generateRandomTestimonials}>
+                        {language === 'en' ? 'See More Students' : '看其他学生'}
                     </button>
                 </div>
             </div>
