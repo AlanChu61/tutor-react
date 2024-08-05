@@ -11,9 +11,9 @@ function Footer() {
             termsOfService: "Terms of Service"
         },
         zh: {
-            copyright: "© 2024 教師網站。保留所有權利。",
-            privacyPolicy: "隱私政策",
-            termsOfService: "服務條款"
+            copyright: "© 2024 教师网站。保留所有权利。",
+            privacyPolicy: "隐私政策",
+            termsOfService: "服务条款"
         }
     };
 
@@ -25,8 +25,8 @@ function Footer() {
                         <p>{content[language].copyright}</p>
                     </div>
                     <div className="col-md-6 text-md-end">
-                        <a href="#" className="text-light me-3">{content[language].privacyPolicy}</a>
-                        <a href="#" className="text-light">{content[language].termsOfService}</a>
+                        <a href="/privacy-policy" className="text-light me-3">{content[language].privacyPolicy}</a>
+                        <a href="/terms-of-service" className="text-light">{content[language].termsOfService}</a>
                     </div>
                 </div>
             </div>
